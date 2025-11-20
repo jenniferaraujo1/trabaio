@@ -1,0 +1,133 @@
+/* ----------- ESTILO GERAL ----------- */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;600&display=swap');
+
+:root{
+  --bg: linear-gradient(180deg,#0047ab 0%, #2b6cff 100%);
+  --card-front: #d7e9ff;
+  --card-back: #d0d0d0;
+  --box-bg: #ffffff;
+  --accent: #4CAF50;
+}
+
+html,body{
+  height:100%;
+}
+
+body {
+  font-family: 'Chakra Petch', Arial, sans-serif;
+  background: var(--bg);
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  color:#04204a;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1 { margin-top: 8px; font-size: 28px; color:#fff; }
+
+.hidden { display: none; }
+
+/* ----------- MENU ----------- */
+#menu .box {
+  width: 360px;
+  margin: 18px auto 30px;
+  padding: 22px;
+  background: var(--box-bg);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(2,18,68,0.18);
+  text-align:left;
+}
+
+#menu p { font-size: 15px; color:#25406b; margin-bottom:14px; }
+#materias, #dificuldade { text-align: left; width: 100%; font-size: 15px; }
+#materias label, #dificuldade label { display:block; margin:6px 0; }
+
+button {
+  padding: 10px 18px;
+  background: var(--accent);
+  border: none;
+  color: white;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:hover { filter:brightness(.95); }
+
+/* ----------- JOGO ----------- */
+#game { max-width: 900px; margin: 10px auto; }
+#status { color: #fff; font-size: 18px; margin-top: 14px; }
+#status span { margin-right: 12px; }
+
+#board {
+  margin: 20px auto 40px;
+  display: grid;
+  gap: 14px;
+  justify-content: center;
+}
+
+/* CARTAS - flip 3D */
+.card {
+  width: 120px;
+  height: 90px;
+  perspective: 900px;
+  cursor: pointer;
+}
+
+.card .inner {
+  width:100%;
+  height:100%;
+  position:relative;
+  transition: transform 0.6s cubic-bezier(.25,.8,.25,1);
+  transform-style: preserve-3d;
+}
+
+/* quando revelada, gira */
+.card.revelada .inner { transform: rotateY(180deg); }
+
+.front, .back {
+  position:absolute;
+  width:100%;
+  height:100%;
+  backface-visibility:hidden;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+}
+
+.front {
+  background: var(--card-back);
+  color:#163350;
+  box-shadow: 0 6px 18px rgba(2,18,68,0.08);
+}
+
+.back {
+  background: var(--card-front);
+  color:#05223a;
+  transform: rotateY(180deg);
+  padding:8px;
+  box-shadow: 0 10px 24px rgba(2,18,68,0.10);
+  font-size: 14px;
+  text-align:center;
+}
+
+/* estado de par correto */
+.card.certa .inner { box-shadow: 0 0 18px rgba(34,139,34,0.15); }
+.card.certa .back { background: #9be3a8; }
+
+/* Responsividade */
+@media (max-width:600px){
+  #menu .box { width: 92%; padding:16px; }
+  .card { width: 22vw; height: 16vw; }
+  #board { gap:10px; }
+}
+
+/* pequena animação ao acertar */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+.card.certa { animation: pulse 400ms ease; }
