@@ -1,0 +1,37 @@
+<html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jogo da Memória da Mente Ativa</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="menu">
+    <h1>Jogo da Memória da Mente Ativa</h1>
+    <div class="box">
+      <p>
+        Bem-vindo! Este é um jogo da memória educacional. Escolha as matérias,
+        selecione a dificuldade e clique em iniciar!
+      </p>
+      <h3>Escolha as matérias:</h3>
+      <div id="materias"></div>
+      <h3>Dificuldade:</h3>
+      <div id="dificuldade">
+        <label><input type="radio" name="dif" value="Fácil" checked> Fácil</label><br>
+        <label><input type="radio" name="dif" value="Médio"> Médio</label><br>
+        <label><input type="radio" name="dif" value="Difícil"> Difícil</label>
+      </div>
+      <button id="btn-start">Iniciar</button>
+    </div>
+  </div>
+  <div id="game" class="hidden">
+    <div id="status">
+      <span id="tempo">Tempo: 0s</span>
+      <span id="pontuacao"> | Pontuação: 0</span>
+    </div>
+    <div id="board"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
